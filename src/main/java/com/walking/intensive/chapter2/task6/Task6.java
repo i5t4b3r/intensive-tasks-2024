@@ -8,7 +8,8 @@ package com.walking.intensive.chapter2.task6;
  */
 public class Task6 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+//        System.out.println(getGcdByEuclideanAlgorithm(15, 25));
+//        System.out.println(getGcd(5, 7));
     }
 
     /**
@@ -19,8 +20,11 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getLcm(int m, int n) {
-        // Ваш код
-        return 0;
+        if (!validate(m, n)) {
+            return -1;
+        }
+
+        return m * n / getGcd(m, n);
     }
 
     /**
@@ -31,8 +35,17 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcd(int m, int n) {
-        // Ваш код
-        return 0;
+        if (!validate(m, n)) {
+            return -1;
+        }
+
+        while (n != 0) {
+            int temp = n;
+            n = m % n;
+            m = temp;
+        }
+
+        return m;
     }
 
     /**
@@ -44,7 +57,24 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcdByEuclideanAlgorithm(int m, int n) {
-        // Ваш код
-        return 0;
+        if (n == 0) {
+            return m;
+        }
+
+        if (m < n) {
+            m = n - m;
+            n = n - m;
+            m = m + n;
+        }
+
+        if (!validate(m, n)) {
+            return -1;
+        }
+
+        return getGcdByEuclideanAlgorithm(n, m % n);
+    }
+
+    static boolean validate(int m, int n) {
+        return m > 0 && n > 0;
     }
 }
