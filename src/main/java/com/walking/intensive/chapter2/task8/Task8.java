@@ -33,9 +33,11 @@ public class Task8 {
     static double getCountHappyTickets() {
         int happyTicketsCounter = 0;
 
-        for (int firstPartOfTicket = 0; firstPartOfTicket <= 999; firstPartOfTicket++) {
-            for (int secondPartOfTicket = 0; secondPartOfTicket <= 999; secondPartOfTicket++) {
-                if (getSumAllDigits(firstPartOfTicket) == getSumAllDigits(secondPartOfTicket)) {
+        for (int ticketFirstPart = 0; ticketFirstPart <= 999; ticketFirstPart++) {
+            int sumFirstTicketPart = getSumAllDigits(ticketFirstPart);
+
+            for (int ticketSecondPart = 0; ticketSecondPart <= 999; ticketSecondPart++) {
+                if (sumFirstTicketPart == getSumAllDigits(ticketSecondPart)) {
                     happyTicketsCounter++;
                 }
             }
